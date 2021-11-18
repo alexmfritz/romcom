@@ -42,7 +42,7 @@ function newRandomCover() {
   displayCover(currentCover);
 };
 
-function newUserCover() {
+function newUserCover(event) {
   event.preventDefault();
   if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
     alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
@@ -63,31 +63,19 @@ function displayCover() {
 };
 
 function toggleFormView() {
-  formView.classList.remove('hidden');
-  homeView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  homeButton.classList.remove('hidden');
-  saveCoverButton.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
+  removeClass([formView, homeButton]);
+  addClass([homeView, savedView, saveCoverButton, randomCoverButton]);
 };
 
 function toggleSavedView() {
-  homeView.classList.add('hidden');
-  savedView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  randomCoverButton.classList.add('hidden');
-  saveCoverButton.classList.add('hidden');
-  homeButton.classList.remove('hidden');
+  removeClass([savedView, homeButton]);
+  addClass([homeView, formView, randomCoverButton, saveCoverButton]);
   displaySavedCovers();
 };
 
 function toggleHomeView() {
-  homeView.classList.remove('hidden');
-  formView.classList.add('hidden');
-  savedView.classList.add('hidden');
-  randomCoverButton.classList.remove('hidden');
-  saveCoverButton.classList.remove('hidden');
-  homeButton.classList.add('hidden');
+  removeClass([homeView, randomCoverButton, saveCoverButton]);
+  addClass([formView, savedView, homeButton]);
 };
 
 function storeUserSubmission() {
@@ -115,13 +103,25 @@ function displaySavedCovers() {
   };
 };
 
-function deleteSavedCover() {
+function deleteSavedCover(event) {
   for(var i = 0; i < savedCovers.length; i++) {
     if (event.target.id === `${savedCovers[i].id}`) {
       savedCovers.splice(i, 1);
     }
   };
   displaySavedCovers();
+};
+
+function removeClass(elements) {
+  for (var i = 0; i < elements.length; i ++) {
+      elements[i].classList.remove('hidden');
+  };
+};
+
+function addClass(elements) {
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].classList.add('hidden');
+  };
 };
 
 function getRandomIndex(array) {
