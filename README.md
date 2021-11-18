@@ -54,6 +54,6 @@ Daniel O'Connell - https://github.com/Daniel-OC
 
 ## Links:
 
-Deploy link: https://alexmfritz.github.io/romcom/
+![Deployable](https://alexmfritz.github.io/romcom/)
 
-Repo link: https://github.com/Daniel-OC/romcom
+![Repository](https://github.com/alexmfritz/romcom)
