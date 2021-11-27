@@ -26,23 +26,13 @@ var savedCovers = [
 ];
 var currentCover;
 
-// Add your event listeners here 👇
-window.addEventListener('load', newRandomCover);
-randomCoverButton.addEventListener('click', newRandomCover);
-makeNewButton.addEventListener('click', toggleFormView);
-viewSavedButton.addEventListener('click', toggleSavedView);
-homeButton.addEventListener('click', toggleHomeView);
-userSubmitButton.addEventListener('click', newUserCover);
-saveCoverButton.addEventListener('click', saveCurrentCover);
-savedCoversSection.addEventListener('dblclick', deleteSavedCover);
-
 // Create your event handlers and other functions here 👇
-function newRandomCover() {
+const newRandomCover = () => {
   currentCover = new Cover(covers[getRandomIndex(covers)], titles[getRandomIndex(titles)], descriptors[getRandomIndex(descriptors)], descriptors[getRandomIndex(descriptors)]);
   displayCover(currentCover);
 };
 
-function newUserCover(event) {
+const newUserCover = (event) => {
   event.preventDefault();
   if (!userCover.value || !userTitle.value || !userTaglineOne.value || !userTaglineTwo.value) {
     alert("Please fill out all of the input fields, otherwise we can't show you a steamy novel!");
@@ -55,43 +45,43 @@ function newUserCover(event) {
   }
 };
 
-function displayCover() {
+const displayCover = () => {
   coverImage.src = currentCover.cover;
   coverTitle.innerText = currentCover.title;
   taglineOne.innerText = currentCover.tagline1;
   taglineTwo.innerText = currentCover.tagline2;
 };
 
-function toggleFormView() {
+const toggleFormView = () => {
   removeClass([formView, homeButton]);
   addClass([homeView, savedView, saveCoverButton, randomCoverButton]);
 };
 
-function toggleSavedView() {
+const toggleSavedView = () => {
   removeClass([savedView, homeButton]);
   addClass([homeView, formView, randomCoverButton, saveCoverButton]);
   displaySavedCovers();
 };
 
-function toggleHomeView() {
+const toggleHomeView = () => {
   removeClass([homeView, randomCoverButton, saveCoverButton]);
   addClass([formView, savedView, homeButton]);
 };
 
-function storeUserSubmission() {
+const storeUserSubmission = () => {
   covers.push(userCover.value);
   titles.push(userTitle.value);
   descriptors.push(userTaglineOne.value);
   descriptors.push(userTaglineTwo.value);
 };
 
-function saveCurrentCover() {
+const saveCurrentCover = () => {
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
 };
 
-function displaySavedCovers() {
+const displaySavedCovers = () => {
   savedCoversSection.innerHTML = ``;
   for(var i = 0; i < savedCovers.length; i++) {
   savedCoversSection.innerHTML += `
@@ -103,7 +93,7 @@ function displaySavedCovers() {
   };
 };
 
-function deleteSavedCover(event) {
+const deleteSavedCover = (event) => {
   for(var i = 0; i < savedCovers.length; i++) {
     if (event.target.id === `${savedCovers[i].id}`) {
       savedCovers.splice(i, 1);
@@ -112,18 +102,29 @@ function deleteSavedCover(event) {
   displaySavedCovers();
 };
 
-function removeClass(elements) {
+const removeClass = (elements) => {
   for (var i = 0; i < elements.length; i ++) {
       elements[i].classList.remove('hidden');
   };
 };
 
-function addClass(elements) {
+const addClass = (elements) => {
   for (var i = 0; i < elements.length; i++) {
       elements[i].classList.add('hidden');
   };
 };
 
-function getRandomIndex(array) {
+const getRandomIndex = (array) => {
   return Math.floor(Math.random() * array.length);
 };
+
+
+// Add your event listeners here 👇
+window.addEventListener('load', newRandomCover);
+randomCoverButton.addEventListener('click', newRandomCover);
+makeNewButton.addEventListener('click', toggleFormView);
+viewSavedButton.addEventListener('click', toggleSavedView);
+homeButton.addEventListener('click', toggleHomeView);
+userSubmitButton.addEventListener('click', newUserCover);
+saveCoverButton.addEventListener('click', saveCurrentCover);
+savedCoversSection.addEventListener('dblclick', deleteSavedCover);
