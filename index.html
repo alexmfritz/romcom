@@ -8,35 +8,35 @@
   </head>
   <body>
     <section class="controls">
-      <button class="home-button hidden">Home</button>
-      <button class="random-cover-button">Show New Random Cover</button>
-      <button class="save-cover-button">Save Cover</button>
-      <button class="view-saved-button">View Saved Covers</button>
-      <button class="make-new-button">Make Your Own Cover</button>
+      <button class="home-button hidden" id="homeBtn">Home</button>
+      <button class="random-cover-button" id="randomBtn">Show New Random Cover</button>
+      <button class="save-cover-button" id="saveBtn">Save Cover</button>
+      <button class="view-saved-button" id="viewBtn">View Saved Covers</button>
+      <button class="make-new-button" id="newBtn">Make Your Own Cover</button>
     </section>
-    <section class="view home-view">
-      <section class="main-cover">
-        <img class="cover-image" src="./assets/prairie.jpg">
-        <h2 class="cover-title">Windswept Hearts</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1">passion</span> and <span class="tagline-2">woe</span></h3>
+    <section class="view home-view" id="homeView">
+      <section class="main-cover" id="main">
+        <img class="cover-image" id="coverImg" src="./assets/prairie.jpg">
+        <h2 class="cover-title" id="coverTitle">Windswept Hearts</h2>
+        <h3 class="tagline">A tale of <span class="tagline-1" id="tagOne">passion</span> and <span class="tagline-2" id="tagTwo">woe</span></h3>
         <img class="price-tag" src="./assets/price.png">
         <img class="overlay" src="./assets/overlay.png">
       </section>
     </section>
-    <section class="view saved-view hidden">
-      <section class="saved-covers-section"></section>
+    <section class="view saved-view hidden" id="savedView">
+      <section class="saved-covers-section" id="savedCovers"></section>
     </section>
-    <section class="view form-view hidden">
-      <form>
+    <section class="view form-view hidden" id="formView">
+      <form id="form">
         <label for="cover">Cover</label>
         <input class="user-cover" type="text" id="cover" />
         <label for="title">Title</label>
         <input class="user-title" type="text" id="title">
         <label for="descriptor1">First descriptor</label>
-        <input class="user-desc1" type="text" id="descriptor1" />
+        <input class="user-desc1" type="text" id="descOne" />
         <label for="descriptor2">Second descriptor</label>
-        <input class="user-desc2" type="text" id="descriptor2" />
-        <button class="create-new-book-button">Make my book</button>
+        <input class="user-desc2" type="text" id="descTwo" />
+        <button class="create-new-book-button" id="createBtn">Make my book</button>
       </form>
     </section>
     <script src="./src/data.js"></script>
