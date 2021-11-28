@@ -102,15 +102,11 @@ const deleteSavedCover = (event) => {
 }
 
 const removeClass = (elements) => {
-  elements.forEach(item => {
-    item.classList.remove('hidden');
-  });
+  elements.forEach(item => item.classList.remove('hidden'));
 }
 
 const addClass = (elements) => {
-  elements.forEach(item => {
-    item.classList.add('hidden');
-  });
+  elements.forEach(item => item.classList.add('hidden'));
 }
 
 const getRandomIndex = (array) => {
